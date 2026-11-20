@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="brand">Help<span>Desk</span></div>
+    <nav>
+        <a href="/">Support Center</a>
+        <a href="/admin">Admin Dashboard</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <p class="eyebrow">CUSTOMER SUPPORT PORTAL</p>
+    <h1>How can we help you?</h1>
+    <p>Submit your request and our support team will assist you.</p>
+</section>
+
+<main class="main-grid">
+
+    <section class="panel">
+        <div class="panel-heading">
+            <h2>Create a Support Ticket</h2>
+            <p>Fill out the details below.</p>
+        </div>
+
+        <form id="ticketForm">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="Your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Ticket Subject</label>
+                <input type="text" id="subject" placeholder="Briefly describe your issue" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category" required>
+                    <option value="">Select category</option>
+                    <option>Technical Support</option>
+                    <option>Billing</option>
+                    <option>Account</option>
+                    <option>Product</option>
+                    <option>General Inquiry</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Priority</label>
+                    <select id="priority" required>
+                    <option value="">Select priority</option>
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="description" rows="5"
+                placeholder="Explain your issue in detail..." required></textarea>
+            </div>
+
+            <button class="btn-primary" type="submit">
+                Submit Ticket →
+            </button>
+
+            <div id="formMessage"></div>
+        </form>
+    </section>
+
+    <section class="panel tracking-panel">
+        <div class="panel-heading">
+            <h2>Track Your Ticket</h2>
+            <p>Search your submitted tickets.</p>
+        </div>
+
+        <div class="search-box">
+            <input id="trackSearch" type="text"
+            placeholder="Enter ticket ID, name, email or subject">
+            <button class="btn-primary" id="trackBtn">Search</button>
+        </div>
+
+        <div id="trackingResults">
+            <div class="empty-state">
+                <div class="empty-icon">⌕</div>
+                <p>Search to view ticket details.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>HelpDesk — Customer Support Ticket System</p>
+    <a href="/admin">Admin Panel →</a>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

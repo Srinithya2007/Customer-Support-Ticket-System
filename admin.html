@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - HelpDesk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="brand">Help<span>Desk</span></div>
+    <nav>
+        <a href="/">Customer Portal</a>
+        <a href="/admin">Admin Dashboard</a>
+    </nav>
+</header>
+
+<section class="admin-hero">
+    <div>
+        <p class="eyebrow">MANAGEMENT CONSOLE</p>
+        <h1>Ticket Dashboard</h1>
+        <p>Manage customer requests and monitor support activity.</p>
+    </div>
+
+    <button class="btn-outline" onclick="loadDashboard()">↻ Refresh</button>
+</section>
+
+<main class="dashboard-container">
+
+    <section class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Total Tickets</div>
+            <div class="stat-number" id="totalCount">0</div>
+            <div class="stat-footer">All requests</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Open</div>
+            <div class="stat-number" id="openCount">0</div>
+            <div class="stat-footer">Awaiting attention</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">In Progress</div>
+            <div class="stat-number" id="progressCount">0</div>
+            <div class="stat-footer">Being handled</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Resolved</div>
+            <div class="stat-number" id="resolvedCount">0</div>
+            <div class="stat-footer">Completed tickets</div>
+        </div>
+    </section>
+
+    <section class="panel tickets-panel">
+
+        <div class="tickets-toolbar">
+            <div>
+                <h2>All Tickets</h2>
+                <p>Review and manage customer requests.</p>
+            </div>
+        </div>
+
+        <div class="filter-row">
+            <input type="text" id="adminSearch"
+            placeholder="Search tickets...">
+
+            <select id="statusFilter">
+                <option value="All">All Statuses</option>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+            </select>
+
+            <select id="priorityFilter">
+                <option value="All">All Priorities</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticket</th>
+                        <th>Customer</th>
+                        <th>Subject</th>
+                        <th>Category</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="ticketTableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <div id="adminEmpty" class="empty-state hidden">
+            <div class="empty-icon">⌕</div>
+            <p>No tickets found.</p>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>HelpDesk Admin Console</p>
+    <a href="/">Back to Customer Portal →</a>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
